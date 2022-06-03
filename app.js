@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const app = express();
 app.set('view engine', 'ejs');
 
+app.use(bodyParser({extended: true}));
 app.use(express.static("public"));
 
 const url = "mongodb+srv://EEngvall:10011014eE@cluster0.frqsy.mongodb.net/AAC?retryWrites=true&w=majority"
