@@ -35,7 +35,7 @@ app.get("/", function(req, res){
 app.post("/submit", function(req, res){
     var name = req.body.name;
     var data = [];
-    Animal.find({"name": name}, function (err, animals) {
+    Animal.find(function (err, animals) {
         if (err) {
             //if error print to console
             console.log(err);
