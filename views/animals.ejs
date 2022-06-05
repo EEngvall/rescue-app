@@ -16,11 +16,11 @@
 
 <body>
     <div class="text-center">
-        <h1>Animals</h1>
-    </div>
+        <h1 class="mb-3">AAC Animal Database</h1>
+        <h4 class="mb-3">Select Filter</h4>
+      </div>
     <form action="/submit" method="post">
         <div class="container w-25 text-center">
-            <label >Select a filter</label>
             <select class="filter form-select" name="filter" id="filter">
                 <option value="name">Name</option>
                 <option value="breed">Breed</option>
@@ -68,7 +68,13 @@
             </tbody>
         </table>
     <% } else { %>
-        <h1>No Animal Found</h1>
+        <div class="jumbotron jumbotron-fluid text-center">
+            <div class="container">
+              <h1 class="display-4">No animals found!</h1>
+              <p class="lead">We're sorry no animals matching that criteria were found in our database.</p>
+              <p class="lead">Please adjust your search criteria and try again.</p>
+            </div>
+          </div>
      <% } %>
 
 
