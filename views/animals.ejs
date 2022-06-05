@@ -8,17 +8,18 @@
     <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
-<style>
+<!-- <style>
     table, th, td {
     border: 1px solid black;
   }
-</style>
+</style> -->
 
 <body>
     <div class="text-center">
         <h1 class="mb-3">AAC Animal Database</h1>
         <h4 class="mb-3">Select Filter</h4>
       </div>
+      <!-- Drop down selection for desired request filter -->
     <form action="/submit" method="post">
         <div class="container w-25 text-center">
             <select class="filter form-select" name="filter" id="filter">
@@ -29,7 +30,7 @@
                 <option value="color">Color</option>
                 <option value="animal_type">Type</option>
             </select>
-
+            <!-- Creates search field as well as submit button inline by appending the button to the search box -->
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="input" placeholder="Search">
                 <div class="input-group-append">
@@ -39,8 +40,8 @@
         </div>
  
     </form>
-    
-    <% if (name.length > 0) { %>
+    <!-- Iterates through provided array and lists the fields within a table -->
+    <% if (animal_id.length > 0) { %>
         <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
@@ -54,7 +55,7 @@
                 </tr>
               </thead>
               <tbody>
-            <% for(var i=0; i<name.length; i++) { %>
+            <% for(var i=0; i<animal_id.length; i++) { %>
                 <tr>
                     <td> <%= name[i] %> </td>
                     <td> <%= animal_id[i] %> </td>
@@ -68,6 +69,7 @@
             </tbody>
         </table>
     <% } else { %>
+      <!-- If search results in no animal ID (Required field) then displays error message. -->
         <div class="jumbotron jumbotron-fluid text-center">
             <div class="container">
               <h1 class="display-4">No animals found!</h1>

@@ -27,9 +27,9 @@ const animalSchema = new mongoose.Schema ({
 //Create new object (of Type, Schema, existing collection)
 const Animal = mongoose.model("Animal", animalSchema, "Animals");
 
+
 app.get("/", function(req, res){
     res.sendFile(__dirname + "/main.html");
-    //res.render("list", {listTitle: "Today", newListItems: items})
 });
 
 app.post("/submit", function(req, res){
@@ -66,6 +66,7 @@ app.post("/submit", function(req, res){
 
             })
             console.log(filter, input)
+            //Passes the value of each array back to the ejs file for use. 
             res.render("animals", {
                 name: name, 
                 animal_id: animal_id, 
@@ -81,10 +82,12 @@ app.post("/submit", function(req, res){
     });
 })
 
+//Redirects back to the root route. 
 app.post("/retry", function(req, res) {
     res.redirect("/")
 })
 
+//Verifys server is up and running on necessary port, or 3000 if no environement variable is specified. 
 app.listen(process.env.PORT || 3000,  function(){
     console.log("Listening on port 3000");
 })
