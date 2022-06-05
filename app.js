@@ -33,21 +33,56 @@ app.get("/", function(req, res){
 });
 
 app.post("/submit", function(req, res){
-    var name = req.body.name;
-    var data = [];
-    Animal.find(function (err, animals) {
+    var input = req.body.input;
+    var filter = req.body.filter;
+    var age_upon_outcome = []
+    var animal_id = []
+    var animal_type = []
+    var breed = []
+    var color = []
+    var date_of_birth =[]
+    var name = []
+    var outcome_type = []
+    var sex_upon_outcome = []
+    Animal.find({[filter]:input}, function (err, animals) {
         if (err) {
             //if error print to console
             console.log(err);
         } else {
-            //If no error loop through animals and print names to console. 
+            //If no error loop through animals and print names to console.
+            //This for each loop inserts the animals attributes into the above empty arrays.  I currently do this becuase I'm
+            //having a difficult time iterating over the animal objects using EJS and getting them to appear correctly. 
+            //This method requires more memory since I'm using individualy arrays so it will need to be refactored at some point to resolve this issue.  
             animals.forEach(function(animal){
-                console.log(animal);
-                data.push(animal.animal_id);
+                age_upon_outcome.push(animal.age_upon_outcome);
+                animal_id.push(animal.animal_id);
+                animal_type.push(animal.animal_type);
+                breed.push(animal.breed);
+                color.push(animal.color);
+                date_of_birth.push(animal.date_of_birth);
+                name.push(animal.name);
+                outcome_type.push(animal.outcome_type);
+                sex_upon_outcome.push(animal.sex_upon_outcome);
+
             })
+            console.log(filter, input)
+            res.render("animals", {
+                name: name, 
+                animal_id: animal_id, 
+                animal_type: animal_type, 
+                breed:breed, color:color, 
+                date_of_birth:date_of_birth,
+                name:name,
+                outcome_type:outcome_type,
+                sex_upon_outcome:sex_upon_outcome
+            });
+
         }
-        res.send(data);
     });
+})
+
+app.post("/retry", function(req, res) {
+    res.redirect("/")
 })
 
 app.listen(process.env.PORT || 3000,  function(){

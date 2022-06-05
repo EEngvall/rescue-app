@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animals</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<style>
+    table, th, td {
+    border: 1px solid black;
+  }
+</style>
+
+<body>
+    <div class="text-center">
+        <h1>Animals</h1>
+    </div>
+    <form action="/submit" method="post">
+        <div class="container w-25 text-center">
+            <label >Select a filter</label>
+            <select class="filter form-select" name="filter" id="filter">
+                <option value="name">Name</option>
+                <option value="breed">Breed</option>
+                <option value="age">Age</option>
+                <option value="animal_id">ID</option>
+                <option value="color">Color</option>
+                <option value="animal_type">Type</option>
+            </select>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="input" placeholder="Search">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="submit">Go!</button>
+                </div>
+            </div>
+        </div>
+ 
+    </form>
+    
+    <% if (name.length > 0) { %>
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Breed</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Color</th>
+                  <th scope="col">Date of Birth</th>
+                  <th scope="col">Outcome</th>
+                </tr>
+              </thead>
+              <tbody>
+            <% for(var i=0; i<name.length; i++) { %>
+                <tr>
+                    <td> <%= name[i] %> </td>
+                    <td> <%= animal_id[i] %> </td>
+                    <td> <%= breed[i] %> </td>
+                    <td> <%= animal_type[i] %> </td>
+                    <td> <%= color[i] %> </td>
+                    <td> <%= date_of_birth[i] %> </td>
+                    <td> <%= outcome_type[i] %> </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <h1>No Animal Found</h1>
+     <% } %>
+
+
+
+
+</body>
+</html>

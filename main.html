@@ -4,13 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
     <title>Document</title>
 </head>
 <body>
-    <h2>Animals</h2>
+    <div class="text-center">
+        <h1>Animals</h1>
+    </div>
     <form action="/submit" method="post">
-        <input type="text" name="name" placeholder="Name"/>
-        <input type="submit"/>
+        <div class="container w-25 text-center">
+            <label >Select a filter</label>
+            <select class="filter form-select" name="filter" id="filter">
+                <option value="name">Name</option>
+                <option value="breed">Breed</option>
+                <option value="age">Age</option>
+                <option value="animal_id">ID</option>
+                <option value="color">Color</option>
+                <option value="animal_type">Type</option>
+            </select>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="input" placeholder="Search">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="submit">Go!</button>
+                </div>
+            </div>
+        </div>
+ 
     </form>
+    <p id="display"></p>
 </body>
 </html>
