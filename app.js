@@ -88,8 +88,8 @@ app.post("/retry", function(req, res) {
 })
 
 //Verifys server is up and running on necessary port, or 3000 if no environement variable is specified. 
-app.listen(process.env.PORT || 3000,  function(){
-    console.log("Listening on port 3000");
+app.listen(process.env.PORT || 80,  function(){
+    console.log("Listening on port 80");
 })
 
 
